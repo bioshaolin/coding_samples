@@ -1,0 +1,32 @@
+########################################################################################
+Read.ME ---- records_match_v1.0
+
+*## DESRCIPTION ##*
+records_match (E.W.Getz_2019):
+a matching value identifier sourced from tab-delimited input(s). This program is being considered
+for future usage as a module to be included in a sequencing assembly pipeline.
+
+input_folder:
+data sets should be moved to input_folder (1-4 data sets)
+
+supplementary_data_dir:
+output for intermediate values generated during program run
+1. concat_input1.1.tx
+2. selection_input1.2.txt
+
+output_folder:
+subdirectory for records_match out path1
+
+*## SET-UP WITH .bashrc TO SET ABSOLUTE PATH ##*
+
+alias records_match="python ~/records_match/records_match.py ~/records_match/input_folder/ ~/records_match/output_folder/"
+
+
+*## USAGE ##*
+
+*with .bashrc settings:
+records_match <c1> <c2> <matchID_1>,<matchID(n)>
+
+
+*without .bashrc settings:
+python ~/records_match/records_match.py ~/records_match/input_folder/ ~/records_match/output_folder/ <c1> <c2> <matchID_1>,<matchID(n)>
