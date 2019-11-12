@@ -1,0 +1,68 @@
+#READ.me for cobalt_2
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+This program is a research aide that aims to streamline initial genome compilation. cobalt_2
+allows the user to compile a project directory built from pre-downloaded assembly summaries
+from either:
+
+ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/
+
+and/or
+
+ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/
+
+Future versions of the cobalt compiler will aim to allow the user to specify an assembly
+summary search to further streamline genome compilation and put valuable time back into
+the hands of scientific inquiry.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Quick Tutorial:
+
+1. Download
+	Download desired assembly_summaries from genbank and refseq (ftp)
+
+2. Move
+	Move assembly_summaries into your home directory (~)
+
+3a. Run command with .bashrc alias
+	"cobalt_2 <directory name>"
+	NOTE: cobalt will generate your project directory given the first command option
+
+3b. Run command without .bashrc alias
+	"source cobalt_2/cobalt_2.1.sh <directory name>"
+	NOTE: cobalt will generate your project directory given the first command option
+
+4. Choose options for subgroup separation
+
+options:
+- cobalt_2 will prompt the user if there is a specified subgroup in the dataset that
+should be copied to a separate subdirectory (See example tutorial).
+- If you would like to separate after initial dump separate_subgroup.sh should be run
+from the project directory.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Example Test (test_dir):
+
+1) you've downloaded a set of Asgard Archaea assembly summaries
+2) move assembly summaries to home directory and run cobalt_2
+3a) You are planning on beginning your investigation specifically studying Heimdall and
+you would prefer a separate directory with Heimdall genomes
+3b) When prompted, "Search, Copy and Separate a subgroup?" - type y for yes
+4) When prompted, "What Subgroup?" - type Heimdall
+NOTE: This copies all Heimdall specific data in the project directory and creates your
+refined project subdirectory.
+NOTE: The separate_subgroup user option is case sensitive as the inquiry correlates directly
+with gbff metadata (i.e - typing heimdall will return error message,
+"No subgroup identified by given parameter. Try another...").
+5) When prompted again, "Search, Copy and Separate a subgroup?" -
+type y for another subgroup search or n to exit program
+
+Ideas for seaprating subgroups:
+- TARA OCEANS MAGs by bio-geographical abbreviation
+- groups within phyla with high variability at the population level (open pangenomes)
+- etc.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+refseq vs genbank protocol:
+
+Depending on the target organism results may vary as some sub-directories in refseq are
+categorized differently. Verify before use that any combination of refseq and genbank
+assembly_summaries are categorized in similar sub-directories.
