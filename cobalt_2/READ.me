@@ -1,7 +1,12 @@
 #READ.me for cobalt_2
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-This program is a research aide that aims to streamline initial genome compilation. cobalt_2
-allows the user to compile a project directory built from pre-downloaded assembly summaries
+This program is a research aide that aims to streamline initial genome gathering via ncbi.
+cobalt_2 can be used via two options:
+
+Option 1) allows the user to run by specifying domain and search for classification to download assembly summaries
+in real-time.
+
+Option 2) allows the user to run from pre-downloaded assembly summaries
 from either:
 
 ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/
@@ -10,12 +15,48 @@ and/or
 
 ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/
 
-Future versions of the cobalt compiler will aim to allow the user to specify an assembly
-summary search to further streamline genome compilation and put valuable time back into
-the hands of scientific inquiry.
+
+Future versions of the cobalt compiler will aim to allow the user to
+a) update pre-existing datasets
+b) add publications of interest to a specified directory and compile data through accession pathways
+as specified in data accessibility sections
+c) user option to gather amino acid translations (.faa) or choose to run prodigal predictions
+d) run prokka with (.gff) settings to calculate CD%, and run CheckM to calculate %completeness and %contamination
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Quick Tutorial:
+*SUGGESTED .bashrc alias: alias cobalt_2="source ~/cobalt_2/cobalt_2.2.sh"
 
+Option 1)
+1a. Run command with .bashrc alias
+	"cobalt_2"
+	NOTE: cobalt will generate your project directory specified during option
+
+1b. Run command without .bashrc alias
+	"source cobalt_2/cobalt_2.2.sh"
+	NOTE: cobalt will generate your project directory specified during option
+
+2. Choose domain
+
+3. Choose to add assembly summaries
+	NOTE: If you have pre-existing assembly summaries verify these are located in your home directory at time of program run
+
+4. Choose ftp site
+
+5. Search organism
+	NOTE: Case sensitive search. Best to search work case sensitive string
+
+6. Choose a secondary ftp site OR continue
+
+7. Choose options for subgroup separation
+
+options:
+- cobalt_2 will prompt the user if there is a specified subgroup in the dataset that
+should be copied to a separate subdirectory (See example tutorial).
+- If you would like to separate after initial dump separate_subgroup.sh should be run
+from the project directory.
+
+
+Option 2)
 1. Download
 	Download desired assembly_summaries from genbank and refseq (ftp)
 
@@ -27,7 +68,7 @@ Quick Tutorial:
 	NOTE: cobalt will generate your project directory given the first command option
 
 3b. Run command without .bashrc alias
-	"source cobalt_2/cobalt_2.1.sh <directory name>"
+	"source cobalt_2/cobalt_2.2.sh <directory name>"
 	NOTE: cobalt will generate your project directory given the first command option
 
 4. Choose options for subgroup separation
@@ -39,21 +80,34 @@ should be copied to a separate subdirectory (See example tutorial).
 from the project directory.
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Example Test (test_dir):
+Example Test
 
-1) you've downloaded a set of Asgard Archaea assembly summaries
-2) move assembly summaries to home directory and run cobalt_2
-3a) You are planning on beginning your investigation specifically studying Heimdall and
-you would prefer a separate directory with Heimdall genomes
-3b) When prompted, "Search, Copy and Separate a subgroup?" - type y for yes
-4) When prompted, "What Subgroup?" - type Heimdall
-NOTE: This copies all Heimdall specific data in the project directory and creates your
-refined project subdirectory.
-NOTE: The separate_subgroup user option is case sensitive as the inquiry correlates directly
-with gbff metadata (i.e - typing heimdall will return error message,
-"No subgroup identified by given parameter. Try another...").
-5) When prompted again, "Search, Copy and Separate a subgroup?" -
-type y for another subgroup search or n to exit program
+1) You are investigating Asgard Archaea and due to a recent publication you've decided
+to begin by charaterizing Heimdall
+2) Run cobalt_2 as specified in the tutorials
+3) Choose Bacteria with "a"
+4) Choose yes with "y"
+5) Choose Genbank with "g"
+6) Type "Odin" (Don't worry. We're covering all the bases here.)
+7) Choose Genbank with "g"
+8) Type "Thor"
+9) Choose Genbank with "g"
+10) Type "Loki"
+11) Choose Genbank with "g"
+12) Type "Hela"
+13) Choose Genbank with "g"
+14) Type "Heimdall"
+15) Choose continue with "c"
+16) Type "asgard" to name project directory
+17) Choose yes with "y"
+18) Type "Heimdall"
+19) Choose No with "n"
+
+CONGRATULATIONS! You now have a clean/functional asgard project directory with a subdirectory of copied Heimdall data.
+By doing so you can begin your analysis (pangenome assembly perhaps) investigating only Heimdall. Retaining the
+asgard superphylum in one set will allow you investigate the group as a whole while Retaining the integrity and
+cleanliness of your specified subdirectory. HAPPY MINING!
+
 
 Ideas for seaprating subgroups:
 - TARA OCEANS MAGs by bio-geographical abbreviation
